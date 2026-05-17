@@ -898,9 +898,47 @@ h1 {
   font-size: 0.94rem;
 }
 
-.site-footer img {
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-brand img {
   width: 172px;
   height: auto;
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(219, 240, 226, 0.14);
+  border-radius: 999px;
+  background: rgba(245, 244, 236, 0.06);
+  color: rgba(245, 244, 236, 0.72);
+  font-size: 0.86rem;
+  font-weight: 680;
+  padding: 0.44rem 0.68rem;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.linkedin-link svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+.linkedin-link:hover {
+  border-color: rgba(151, 224, 224, 0.36);
+  background: rgba(151, 224, 224, 0.1);
+  color: var(--text);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
@@ -1165,5 +1203,11 @@ h1 {
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .footer-brand {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
 }
