@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiftSight Settings</title>
+    <link rel="stylesheet" href="./settings.css" />
+  </head>
+  <body>
+    <main class="settings-shell" aria-label="ShiftSight settings">
+      <div class="scene" aria-hidden="true">
+        <div class="scene-logo"></div>
+        <div class="scene-band scene-band-a"></div>
+        <div class="scene-band scene-band-b"></div>
+      </div>
+
+      <section class="glass-window">
+        <header class="settings-header">
+          <div class="brand-lockup">
+            <div>
+              <h1 class="visually-hidden">ShiftSight</h1>
+              <img class="brand-logo" src="../../assets/brand-logo.svg" alt="ShiftSight" />
+              <p>20-20-20 break timer</p>
+            </div>
+          </div>
+        </header>
+
+        <form id="settingsForm" class="settings-form">
+          <section class="control-band">
+            <fieldset class="mode-field">
+              <legend>Break style</legend>
+              <div class="segmented-control">
+                <label>
+                  <input id="modeOverlay" name="breakMode" type="radio" value="overlay" checked />
+                  <span>Full screen</span>
+                </label>
+                <label>
+                  <input id="modeNotification" name="breakMode" type="radio" value="notification" />
+                  <span>Notification</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="number-grid">
+              <label class="field">
+                <span>Interval</span>
+                <div class="number-input">
+                  <input
+                    id="intervalMinutes"
+                    name="intervalMinutes"
+                    type="number"
+                    min="1"
+                    max="240"
+                    step="1"
+                    value="20"
+                    required
+                  />
+                  <span>min</span>
+                </div>
+              </label>
+
+              <label class="field">
+                <span>Duration</span>
+                <div class="number-input">
+                  <input
+                    id="durationSeconds"
+                    name="durationSeconds"
+                    type="number"
+                    min="5"
+                    max="300"
+                    step="1"
+                    value="20"
+                    required
+                  />
+                  <span>sec</span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <section class="toggle-band">
+            <label class="toggle-row">
+              <span>Sound</span>
+              <input id="soundEnabled" name="soundEnabled" type="checkbox" checked />
+              <span class="toggle" aria-hidden="true"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span>Start on login</span>
+              <input id="startOnLogin" name="startOnLogin" type="checkbox" />
+              <span class="toggle" aria-hidden="true"></span>
+            </label>
+
+            <label class="toggle-row">
+              <span>Strict mode</span>
+              <input id="strictMode" name="strictMode" type="checkbox" />
+              <span class="toggle" aria-hidden="true"></span>
+            </label>
+          </section>
+
+          <footer class="form-footer">
+            <span id="status" class="status" role="status"></span>
+            <button type="submit">Save</button>
+          </footer>
+        </form>
+      </section>
+    </main>
+    <script src="./settings.js"></script>
+  </body>
+</html>

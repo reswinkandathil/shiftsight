@@ -1,0 +1,239 @@
+:root {
+  color-scheme: dark;
+  --progress: 0deg;
+  --text: #f7f9fc;
+  --muted: rgba(247, 249, 252, 0.64);
+  --accent: #7bcff4;
+  --glass: rgba(20, 24, 31, 0.52);
+  --line: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #05070b;
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(145deg, rgba(4, 6, 10, 0.96), rgba(17, 21, 29, 0.94)),
+    #05070b;
+}
+
+.break-screen {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-items: center;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 30%),
+    linear-gradient(180deg, rgba(123, 207, 244, 0.08), transparent 46%),
+    #05070b;
+}
+
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.023) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+  opacity: 0.55;
+  transform: rotate(-8deg);
+}
+
+.scene-logo {
+  position: absolute;
+  right: -10vmin;
+  bottom: -13vmin;
+  width: min(64vmin, 42rem);
+  aspect-ratio: 1;
+  background: url("../../assets/brand-mark.svg") center / contain no-repeat;
+  filter: blur(34px);
+  opacity: 0.23;
+  transform: rotate(-10deg);
+}
+
+.scene-band {
+  position: absolute;
+  width: 72vmax;
+  height: 16vmin;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.11), transparent),
+    rgba(255, 255, 255, 0.03);
+  filter: blur(11px);
+  opacity: 0.55;
+}
+
+.scene-band-a {
+  top: 6vh;
+  left: -38vmax;
+  transform: rotate(-25deg);
+}
+
+.scene-band-b {
+  right: -34vmax;
+  bottom: 12vh;
+  transform: rotate(-32deg);
+}
+
+.break-content {
+  position: relative;
+  display: grid;
+  width: min(92vw, 54rem);
+  overflow: hidden;
+  justify-items: center;
+  gap: clamp(1.05rem, 2.25vh, 1.7rem);
+  border: 1px solid var(--line);
+  border-radius: clamp(1.45rem, 3vmin, 2rem);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 9rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 48%),
+    var(--glass);
+  box-shadow:
+    0 2.2rem 7rem rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+  padding: clamp(2.4rem, 5.8vmin, 4.7rem) clamp(1.5rem, 4vmin, 3rem);
+  text-align: center;
+  animation: settle 700ms ease-out both;
+  backdrop-filter: blur(34px) saturate(1.35);
+}
+
+.break-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    url("../../assets/brand-mark.svg") 108% -16% / 13rem auto no-repeat,
+    linear-gradient(160deg, rgba(123, 207, 244, 0.16), transparent 46%),
+    rgba(255, 255, 255, 0.02);
+  opacity: 0.48;
+}
+
+.break-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 36%);
+}
+
+.progress-ring {
+  display: grid;
+  width: clamp(11.5rem, 24vmin, 16.6rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    conic-gradient(var(--accent) var(--progress), rgba(255, 255, 255, 0.11) 0deg),
+    rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 1.6rem 4rem rgba(0, 0, 0, 0.34),
+    0 0 3.5rem rgba(123, 207, 244, 0.14);
+  transition: background 160ms linear;
+}
+
+.progress-ring__inner {
+  display: grid;
+  width: calc(100% - 1.05rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  background: rgba(5, 7, 11, 0.78);
+}
+
+.timer {
+  font-size: clamp(4rem, 10.5vmin, 7.3rem);
+  font-weight: 830;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 6.2vmin, 5.25rem);
+  font-weight: 840;
+  line-height: 0.94;
+  letter-spacing: 0;
+}
+
+p {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.16rem, 2.45vmin, 1.9rem);
+  line-height: 1.35;
+}
+
+.skip-button {
+  min-width: 8.5rem;
+  margin-top: clamp(0.35rem, 1.3vh, 0.8rem);
+  padding: 0.78rem 1.08rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(247, 249, 252, 0.84);
+  font: inherit;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.skip-button:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.skip-button:active {
+  transform: translateY(1px);
+}
+
+.skip-button[hidden] {
+  display: none;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

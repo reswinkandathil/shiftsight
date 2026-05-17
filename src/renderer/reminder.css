@@ -1,0 +1,189 @@
+:root {
+  color-scheme: dark;
+  --text: #fbfbff;
+  --muted: rgba(251, 251, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.16);
+  --button: rgba(255, 255, 255, 0.13);
+  --button-strong: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: transparent;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  padding: 0.75rem;
+  -webkit-app-region: drag;
+}
+
+.reminder-card {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  gap: 1.1rem 1.35rem;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 1.9rem;
+  background:
+    radial-gradient(circle at 12% 24%, rgba(245, 114, 199, 0.28), transparent 22%),
+    radial-gradient(circle at 86% 78%, rgba(84, 116, 255, 0.34), transparent 34%),
+    linear-gradient(135deg, rgba(18, 18, 68, 0.78), rgba(23, 20, 88, 0.58));
+  box-shadow:
+    0 1.4rem 4rem rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  padding: 1.15rem 1.25rem;
+  backdrop-filter: blur(28px) saturate(1.35);
+}
+
+.clock-mark {
+  position: relative;
+  display: grid;
+  width: 4.15rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 74% 24%, rgba(255, 213, 124, 0.92), transparent 25%),
+    linear-gradient(145deg, #e951ba, #ff8b6c);
+  box-shadow:
+    0 0.9rem 2rem rgba(233, 81, 186, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.clock-mark::before {
+  content: "";
+  position: absolute;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 -1.52rem 0 rgba(255, 255, 255, 0.55),
+    1.08rem -1.08rem 0 rgba(255, 255, 255, 0.46),
+    1.52rem 0 0 rgba(255, 255, 255, 0.46),
+    1.08rem 1.08rem 0 rgba(255, 255, 255, 0.46),
+    0 1.52rem 0 rgba(255, 255, 255, 0.55),
+    -1.08rem 1.08rem 0 rgba(255, 255, 255, 0.46),
+    -1.52rem 0 0 rgba(255, 255, 255, 0.46),
+    -1.08rem -1.08rem 0 rgba(255, 255, 255, 0.46);
+}
+
+.clock-mark span {
+  position: relative;
+  width: 1.6rem;
+  height: 1.8rem;
+}
+
+.clock-mark span::before,
+.clock-mark span::after {
+  content: "";
+  position: absolute;
+  left: 0.72rem;
+  bottom: 0.82rem;
+  width: 0.22rem;
+  border-radius: 999px;
+  background: #fff;
+  transform-origin: bottom center;
+}
+
+.clock-mark span::before {
+  height: 1.4rem;
+  transform: rotate(-28deg);
+}
+
+.clock-mark span::after {
+  height: 0.9rem;
+  transform: rotate(148deg);
+}
+
+.reminder-copy {
+  min-width: 0;
+}
+
+.countdown {
+  font-size: 2rem;
+  font-weight: 860;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.reminder-actions {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(13rem, 1.8fr) repeat(3, minmax(5.4rem, 0.8fr));
+  gap: 0.75rem;
+  -webkit-app-region: no-drag;
+}
+
+button {
+  min-height: 3.1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(251, 251, 255, 0.82);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 780;
+  letter-spacing: 0;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+button:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--button);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.primary-action {
+  background: var(--button-strong);
+  color: #fff;
+}
+
+.snooze-action[hidden] {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .reminder-card {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-mark {
+    display: none;
+  }
+
+  .reminder-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}

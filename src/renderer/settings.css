@@ -1,0 +1,432 @@
+:root {
+  color-scheme: dark;
+  --text: #f6f8fb;
+  --muted: rgba(246, 248, 251, 0.58);
+  --faint: rgba(246, 248, 251, 0.32);
+  --glass: rgba(23, 27, 33, 0.54);
+  --glass-deep: rgba(11, 14, 20, 0.56);
+  --line: rgba(255, 255, 255, 0.15);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --accent: #7bcff4;
+  --accent-strong: #63bfe9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+  color: var(--text);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(5, 7, 10, 0.96), rgba(18, 22, 29, 0.92)),
+    #090b10;
+}
+
+.settings-shell {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100vh;
+  align-items: stretch;
+  padding: 0;
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 32%),
+    linear-gradient(180deg, rgba(123, 207, 244, 0.08), transparent 45%),
+    #080a0f;
+}
+
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  opacity: 0.55;
+  transform: rotate(-8deg);
+}
+
+.scene-logo {
+  position: absolute;
+  right: -5rem;
+  top: 5rem;
+  width: 24rem;
+  aspect-ratio: 1;
+  background: url("../../assets/brand-mark.svg") center / contain no-repeat;
+  filter: blur(1px);
+  opacity: 0.18;
+  transform: rotate(-7deg);
+}
+
+.scene-band {
+  position: absolute;
+  width: 52rem;
+  height: 12rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent),
+    rgba(255, 255, 255, 0.03);
+  filter: blur(10px);
+  opacity: 0.55;
+}
+
+.scene-band-a {
+  top: 4rem;
+  left: -25rem;
+  transform: rotate(-28deg);
+}
+
+.scene-band-b {
+  right: -28rem;
+  bottom: 5rem;
+  transform: rotate(-34deg);
+}
+
+.glass-window {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 9rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 52%);
+  backdrop-filter: blur(24px) saturate(1.25);
+}
+
+.glass-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(160deg, rgba(123, 207, 244, 0.16), transparent 46%),
+    rgba(255, 255, 255, 0.02);
+  filter: blur(0.2px);
+  opacity: 0.62;
+}
+
+.glass-window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 36%);
+}
+
+.settings-header {
+  padding: 4rem 2rem 1.35rem;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 14.5rem;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+h1,
+p,
+fieldset {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.92rem;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+p {
+  margin-top: 0.28rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.settings-form {
+  display: grid;
+  gap: 1rem;
+  padding: 0 2rem 1.45rem;
+}
+
+.control-band,
+.toggle-band {
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 1.15rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
+    var(--glass-deep);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1rem 2.2rem rgba(0, 0, 0, 0.14);
+}
+
+.mode-field {
+  display: grid;
+  gap: 0.85rem;
+  border: 0;
+  padding: 1rem;
+}
+
+legend,
+.field > span,
+.toggle-row > span:first-child {
+  color: rgba(246, 248, 251, 0.9);
+  font-size: 0.94rem;
+  font-weight: 760;
+}
+
+.segmented-control {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 0.3rem;
+}
+
+.segmented-control label {
+  min-width: 0;
+  cursor: pointer;
+}
+
+.segmented-control input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.segmented-control span {
+  display: grid;
+  min-height: 2.55rem;
+  place-items: center;
+  border-radius: 0.65rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 780;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.segmented-control input:checked + span {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), transparent),
+    rgba(123, 207, 244, 0.88);
+  box-shadow:
+    0 0.8rem 1.8rem rgba(75, 167, 220, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  color: #06131c;
+}
+
+.number-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line-soft);
+}
+
+.field,
+.toggle-row {
+  display: flex;
+  min-height: 4.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+}
+
+.field + .field {
+  border-left: 1px solid var(--line-soft);
+}
+
+.toggle-row + .toggle-row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.number-input {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.number-input input {
+  width: 3.6rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 1.55rem;
+  font-weight: 820;
+  line-height: 1;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.number-input input::-webkit-inner-spin-button,
+.number-input input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.number-input span {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.toggle-row {
+  cursor: pointer;
+}
+
+.toggle-row input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.toggle {
+  position: relative;
+  flex: 0 0 auto;
+  width: 3.22rem;
+  height: 1.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.24);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.21rem;
+  width: 1.26rem;
+  height: 1.26rem;
+  border-radius: 50%;
+  background: rgba(246, 248, 251, 0.8);
+  box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.34);
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.toggle-row input:checked + .toggle {
+  border-color: rgba(123, 207, 244, 0.52);
+  background: rgba(123, 207, 244, 0.32);
+}
+
+.toggle-row input:checked + .toggle::after {
+  transform: translateX(1.43rem);
+  background: var(--accent);
+}
+
+.form-footer {
+  display: flex;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.1rem 0.05rem 0;
+}
+
+.status {
+  min-height: 1.3rem;
+  color: var(--accent);
+  font-size: 0.94rem;
+}
+
+button {
+  min-width: 7.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.82rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), transparent),
+    var(--accent);
+  color: #06131c;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 850;
+  padding: 0.78rem 1.2rem;
+  box-shadow:
+    0 0.9rem 2rem rgba(75, 167, 220, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+button:hover {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent),
+    var(--accent-strong);
+  box-shadow:
+    0 1rem 2.2rem rgba(75, 167, 220, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 500px) {
+  .settings-header {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .settings-form {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .number-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field + .field {
+    border-top: 1px solid var(--line-soft);
+    border-left: 0;
+  }
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiftSight Break</title>
+    <link rel="stylesheet" href="./overlay.css" />
+  </head>
+  <body>
+    <main class="break-screen" aria-live="polite">
+      <div class="scene" aria-hidden="true">
+        <div class="scene-logo"></div>
+        <div class="scene-band scene-band-a"></div>
+        <div class="scene-band scene-band-b"></div>
+      </div>
+      <section class="break-content">
+        <div class="progress-ring" aria-hidden="true">
+          <div class="progress-ring__inner">
+            <span id="timer" class="timer">20</span>
+          </div>
+        </div>
+        <h1>Shift Your Sight</h1>
+        <p>Shift your vision to something far away</p>
+        <button id="skipButton" class="skip-button" type="button">Skip break</button>
+      </section>
+    </main>
+    <script src="./overlay.js"></script>
+  </body>
+</html>

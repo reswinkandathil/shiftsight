@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiftSight Reminder</title>
+    <link rel="stylesheet" href="./reminder.css" />
+  </head>
+  <body>
+    <main class="reminder-card" aria-live="polite">
+      <div class="clock-mark" aria-hidden="true">
+        <span></span>
+      </div>
+
+      <section class="reminder-copy">
+        <div id="countdown" class="countdown">00:10</div>
+        <p id="message">Almost time. Your eyes will appreciate this.</p>
+      </section>
+
+      <section class="reminder-actions" aria-label="Reminder actions">
+        <button id="startNow" class="primary-action" type="button">Start this break now</button>
+        <button class="snooze-action" type="button" data-minutes="1">+1m</button>
+        <button class="snooze-action" type="button" data-minutes="5">+5m</button>
+        <button class="snooze-action" type="button" data-minutes="15">+15m</button>
+      </section>
+    </main>
+    <script src="./reminder.js"></script>
+  </body>
+</html>
