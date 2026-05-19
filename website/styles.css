@@ -222,6 +222,7 @@ h1 {
   display: inline-flex;
   min-height: 52px;
   align-items: center;
+  gap: 9px;
   justify-content: center;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -232,6 +233,13 @@ h1 {
     transform 180ms ease,
     background 180ms ease,
     border-color 180ms ease;
+}
+
+.button svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: currentColor;
 }
 
 .button:hover {
